@@ -30,7 +30,10 @@ export default createLazyGenerator({
     templatePath: join(import.meta.dirname, 'template.html'),
     title: 'Node.js',
     imports: {
-      '#config/Logo': '@node-core/ui-components/Common/NodejsLogo',
+      '#theme/Logo': '@node-core/ui-components/Common/NodejsLogo',
+      '#theme/Navigation': join(import.meta.dirname, './ui/components/NavBar'),
+      '#theme/Sidebar': join(import.meta.dirname, './ui/components/SideBar'),
+      '#theme/MetaBar': join(import.meta.dirname, './ui/components/MetaBar'),
     },
   },
 });

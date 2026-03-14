@@ -25,15 +25,15 @@ export const NODE_MODULES = resolve(
 export const JSX_IMPORTS = {
   NavBar: {
     name: 'NavBar',
-    source: resolve(ROOT, './ui/components/NavBar'),
+    source: '#theme/Navigation',
   },
   SideBar: {
     name: 'SideBar',
-    source: resolve(ROOT, './ui/components/SideBar'),
+    source: '#theme/Sidebar',
   },
   MetaBar: {
     name: 'MetaBar',
-    source: resolve(ROOT, './ui/components/MetaBar'),
+    source: '#theme/MetaBar',
   },
   CodeBox: {
     name: 'CodeBox',
