@@ -280,22 +280,34 @@ export const processEntry = (entry, remark) => {
 };
 
 /**
+ * Builds the frontmatter properties from the head metadata entry.
+ * @param {import('../../metadata/types').MetadataEntry} head - The main API metadata entry
+ */
+const buildFrontmatter = head => ({
+  layout: head.layout || 'default',
+  contributors: head.contributors || [],
+});
+
+/**
  * Builds the overall document layout tree
  * @param {Array<import('../../metadata/types').MetadataEntry>} entries - API documentation metadata entries
  * @param {ReturnType<import('./buildBarProps.mjs').buildSideBarProps>} sideBarProps - Props for the sidebar component
  * @param {ReturnType<buildMetaBarProps>} metaBarProps - Props for the meta bar component
  * @param {import('unified').Processor} remark - The remark processor
+ * @param {Object} frontmatter - The extracted frontmatter properties (layout, contributors, etc.)
  */
 export const createDocumentLayout = (
   entries,
   sideBarProps,
   metaBarProps,
-  remark
+  remark,
+  frontmatter
 ) =>
   createTree('root', [
     createJSXElement(JSX_IMPORTS.Layout.name, {
       sideBarProps,
       metaBarProps,
+      frontmatter,
       children: entries.map(entry => processEntry(entry, remark)),
     }),
   ]);
@@ -314,12 +326,16 @@ const buildContent = async (metadataEntries, head, sideBarProps, remark) => {
   // Build props for the MetaBar from head and entries
   const metaBarProps = buildMetaBarProps(head, metadataEntries);
 
+  // Extract frontmatter properties for the Layout
+  const frontmatter = buildFrontmatter(head);
+
   // Create root document AST with all layout components and processed content
   const root = createDocumentLayout(
     metadataEntries,
     sideBarProps,
     metaBarProps,
-    remark
+    remark,
+    frontmatter
   );
 
   // Run remark processor to transform AST (parse markdown, plugins, etc.)
