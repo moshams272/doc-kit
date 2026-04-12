@@ -86,6 +86,7 @@
   "csskeywordvalue": "https://developer.mozilla.org/docs/Web/API/CSSKeywordValue",
   "csslayerblockrule": "https://developer.mozilla.org/docs/Web/API/CSSLayerBlockRule",
   "csslayerstatementrule": "https://developer.mozilla.org/docs/Web/API/CSSLayerStatementRule",
+  "cssmathclamp": "https://developer.mozilla.org/docs/Web/API/CSSMathClamp",
   "cssmathinvert": "https://developer.mozilla.org/docs/Web/API/CSSMathInvert",
   "cssmathmax": "https://developer.mozilla.org/docs/Web/API/CSSMathMax",
   "cssmathmin": "https://developer.mozilla.org/docs/Web/API/CSSMathMin",
